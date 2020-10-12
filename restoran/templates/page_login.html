@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %}Авторизация{% endblock %}
+
+{% block content %}
+    <div style="width:320px; margin:32px auto; padding:8px;">
+        <h1>Авторизация</h1>
+    
+        {% for field in form.errors %}
+        {% for error in form.errors[field] %}
+        <div style="padding:4px;color:red;border:1px solid red;">
+            {{error}}
+        </div>
+        {% endfor %}
+        {% endfor %}
+    
+        <form action="/login" method="post" novalidate>
+            {{ form.hidden_tag() }}
+            <div style="padding:4px 0;">
+                {{ form.username.label }} 
+                <div style="padding:4px 0;">
+                    {{ form.username() }}
+                </div>
+            </div>
+            <div style="padding:4px 0;">
+                {{ form.password.label }} 
+                <div style="padding:4px 0;">
+                    {{ form.password() }}
+                </div>
+            </div>
+            <div style="padding:4px 0;">
+                <button type="submit">Войти</button>
+            </div>
+        </form>
+
+    </div>
+{% endblock %}
