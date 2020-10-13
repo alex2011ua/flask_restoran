@@ -2,9 +2,9 @@ from functools import wraps
 
 from flask import abort, flash, session, redirect, request, render_template
 
-from example1 import app, db
-from example1.models import User
-from example1.forms import LoginForm, RegistrationForm, ChangePasswordForm
+from restoran import app, db
+from restoran.models import User
+from restoran.forms import LoginForm, RegistrationForm, ChangePasswordForm
 
 # ------------------------------------------------------
 # Декораторы авторизации
@@ -29,9 +29,9 @@ def admin_only(f):
 # ------------------------------------------------------
 # Страница админки
 @app.route('/')
-@login_required 
+#@login_required
 def home():
-    return render_template("page_admin.html")
+    return render_template("main.html")
 
 # ------------------------------------------------------
 # Страница аутентификации
@@ -44,7 +44,7 @@ def login():
 
     if request.method == "POST":
         if not form.validate_on_submit():
-            return render_template("page_login.html", form=form)
+            return render_template("login.html", form=form)
         
         user = User.query.filter_by(username=form.username.data).first()
         if user and user.password_valid(form.password.data):
@@ -54,10 +54,15 @@ def login():
                 "role": user.role,
             }
             return redirect("/")
-
+        else:
+            user = User(username =form.username.data,
+                        password = form.password.data,
+                        role = 'test')
+            db.session.add(user)
+            db.session.commit()
         form.username.errors.append("Не верное имя или пароль")
 
-    return render_template("page_login.html", form=form)
+    return render_template("login.html", form=form)
 
 # ------------------------------------------------------
 # Страница выхода из админки
@@ -70,19 +75,19 @@ def logout():
 # ------------------------------------------------------
 # Страница добавления пользователя
 @app.route("/registration", methods=["GET", "POST"])
-@admin_only
+#@admin_only
 @login_required 
 def registration():
     form = RegistrationForm()
 
     if request.method == "POST":
         if not form.validate_on_submit():
-            return render_template("page_registration.html", form=form)
+            return render_template("register.html", form=form)
 
         user = User.query.filter_by(username=form.username.data).first()
         if user:
             form.username.errors.append("Пользователь с таким именем уже существует")
-            return render_template("page_registration.html", form=form)
+            return render_template("register.html", form=form)
 
         user = User()
         user.username = form.username.data
@@ -94,7 +99,7 @@ def registration():
         flash(f"Пользователь: {form.username.data} с паролем: {form.password.data} зарегистрирован")
         return redirect("/registration")
 
-    return render_template("page_registration.html", form=form)
+    return render_template("register.html", form=form)
 
 # ------------------------------------------------------
 # Страница смены пароля
