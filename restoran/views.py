@@ -31,6 +31,7 @@ def admin_only(f):
 @app.route('/')
 #@login_required
 def home():
+
     return render_template("main.html")
 
 # ------------------------------------------------------
@@ -54,12 +55,7 @@ def login():
                 "role": user.role,
             }
             return redirect("/")
-        else:
-            user = User(username =form.username.data,
-                        password = form.password.data,
-                        role = 'test')
-            db.session.add(user)
-            db.session.commit()
+
         form.username.errors.append("Не верное имя или пароль")
 
     return render_template("login.html", form=form)
@@ -76,7 +72,7 @@ def logout():
 # Страница добавления пользователя
 @app.route("/registration", methods=["GET", "POST"])
 #@admin_only
-@login_required 
+#@login_required
 def registration():
     form = RegistrationForm()
 
