@@ -47,11 +47,11 @@ def login():
         if not form.validate_on_submit():
             return render_template("login.html", form=form)
         
-        user = User.query.filter_by(username=form.username.data).first()
+        user = User.query.filter_by(mail=form.mail.data).first()
         if user and user.password_valid(form.password.data):
             session["user"] = {
                 "id": user.id,
-                "username": user.username,
+                "mail": user.mail,
                 "role": user.role,
             }
             return redirect("/")

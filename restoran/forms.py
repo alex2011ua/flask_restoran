@@ -15,7 +15,7 @@ def password_check(form, field):
         raise ValidationError(msg)
 
 class LoginForm(FlaskForm):
-    username = StringField("Имя:", validators=[DataRequired()])
+    mail = StringField("Имя:", validators=[DataRequired()])
     password = PasswordField("Пароль:", validators=[DataRequired()])
 
 class RegistrationForm(FlaskForm):
