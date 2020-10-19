@@ -3,7 +3,7 @@ from functools import wraps
 from flask import abort, flash, session, redirect, request, render_template
 
 from restoran import app, db
-from restoran.models import User
+from restoran.models import User, Category
 from restoran.forms import LoginForm, RegistrationForm, ChangePasswordForm
 
 # ------------------------------------------------------
@@ -31,8 +31,23 @@ def admin_only(f):
 @app.route('/')
 #@login_required
 def home():
+    cat = Category.query.all()
+    return render_template("main.html", cats = cat)
 
-    return render_template("main.html")
+#Добавление в карзину
+@login_required
+@app.route('/addtocart/<id>/')
+def addtocart(id):
+    session["cart"] = id
+    return redirect("/cart")
+
+
+@login_required
+@app.route('/cart/')
+def cart():
+
+    return render_template("cart.html")
+
 
 # ------------------------------------------------------
 # Страница аутентификации
@@ -80,20 +95,20 @@ def registration():
         if not form.validate_on_submit():
             return render_template("register.html", form=form)
 
-        user = User.query.filter_by(username=form.username.data).first()
+        user = User.query.filter_by(mail=form.mail.data).first()
         if user:
-            form.username.errors.append("Пользователь с таким именем уже существует")
+            form.mail.errors.append("Пользователь с таким именем уже существует")
             return render_template("register.html", form=form)
 
         user = User()
-        user.username = form.username.data
+        user.mail = form.mail.data
         user.password = form.password.data
         user.role = "user"
         db.session.add(user)
         db.session.commit()
 
-        flash(f"Пользователь: {form.username.data} с паролем: {form.password.data} зарегистрирован")
-        return redirect("/registration")
+        flash(f"Пользователь: {form.mail.data} с паролем: {form.password.data} зарегистрирован")
+        return redirect("/login")
 
     return render_template("register.html", form=form)
 

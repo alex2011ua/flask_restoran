@@ -19,7 +19,7 @@ class LoginForm(FlaskForm):
     password = PasswordField("Пароль:", validators=[DataRequired()])
 
 class RegistrationForm(FlaskForm):
-    username = StringField(
+    mail = StringField(
         "Имя:", 
         validators=[
             DataRequired(),
@@ -31,7 +31,7 @@ class RegistrationForm(FlaskForm):
         validators=[
             DataRequired(),
             Length(min=8, message="Пароль должен быть не менее 8 символов"),
-            EqualTo('confirm_password', message="Пароли не одинаковые"),
+
             password_check
         ]
     )

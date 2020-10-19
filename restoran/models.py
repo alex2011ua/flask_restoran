@@ -37,7 +37,7 @@ class Meal(db.Model):
     description = db.Column(db.String(128), nullable=False)
     picture = db.Column(db.String(128), nullable=False)
     category = db.relationship("Category")
-    category_id = db.Column(db.Integer, db.ForeignKey("meals.id"))
+    category_id = db.Column(db.Integer, db.ForeignKey("categorys.id"))
 
 
 class Category(db.Model):
