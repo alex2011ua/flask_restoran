@@ -1,10 +1,19 @@
 {% extends "base.html" %}
 {% block main %}
   <main class="container">
+  {% if meals %}
     <h1 class="h3 my-4">Корзина</h1>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li><div class="alert alert-warning" role="alert">{{ message }}</div></li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
 
-    <div class="alert alert-warning" role="alert">Блюдо удалено из корзины</div>
-    <div class="alert alert-warning" role="alert">Чтобы сделать заказ – <a href="/login.html">войдите</a> или <a href="/register.html">зарегистрируйтесь</a></div>
+
 
     <div class="row mt-5">
 
@@ -52,43 +61,30 @@
 
       <div class="col-1"></div>
       <div class="col-7">
-        <h4 class="mb-3 col-7 mb-5">3 блюда в корзине</h4>
+        <h4 class="mb-3 col-7 mb-5">{{ meals|length }} блюда в корзине</h4>
+
+
         <table class="table">
           <tbody>
+          {% for meal in meals %}
             <tr>
-              <th scope="row">Ролл "Хомский"</th>
+              <th scope="row">{{ meal.title }}</th>
               <td></td>
               <td>1</td>
-              <td>315</td>
-              <td><a class="text-danger" href="#">Удалить</a></td>
+              <td>{{ meal.price }}</td>
+              <td><a class="text-danger" href="/delfromcart/{{ meal.id }}/">Удалить</a></td>
             </tr>
-            <tr>
-              <th scope="row">Бургер 404</th>
-              <td></td>
-              <td>1</td>
-              <td>250</td>
-              <td><a class="text-danger" href="#">Удалить</a></td>
-            </tr>
-            <tr>
-              <th scope="row">Пица "Армин"</th>
-              <td></td>
-              <td>1</td>
-              <td>310</td>
-              <td><a class="text-danger" href="#">Удалить</a></td>
-            </tr>
+          {% endfor %}
+
+
           </tbody>
         </table>
         <hr>
-        <p class="display-4 my-2 ">875 руб</p>
+        <p class="display-4 my-2 ">{{ summ_cart }} грн.</p>
+      {% else %}
+              <h4 class="mb-3 col-7 mb-5">Корзина пуста</h4>
+          {% endif %}
       </div>
     </div>
   </main>
-  <footer class="footer">
-    <nav class="container navbar navbar-light bg-light">
-      <ul class="navbar-nav mr-auto">
-        <p class="h4 nav-link">Stepik Delivery</p>
-      </ul>
-      <a class="text-muted" href="#">Project author 2020</a>
-    </nav>
-  </footer>
 {% endblock %}

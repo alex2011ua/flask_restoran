@@ -3,7 +3,7 @@ from functools import wraps
 from flask import abort, flash, session, redirect, request, render_template
 
 from restoran import app, db
-from restoran.models import User, Category
+from restoran.models import User, Category, Meal
 from restoran.forms import LoginForm, RegistrationForm, ChangePasswordForm
 
 # ------------------------------------------------------
@@ -27,26 +27,56 @@ def admin_only(f):
     return decorated_function
 
 # ------------------------------------------------------
+#clear_cart
+@app.route('/cls/')
+def clear_cart():
+    del session["cart"]
+
+    return redirect("/")
+
 # Страница админки
 @app.route('/')
 #@login_required
 def home():
     cat = Category.query.all()
+    print(session)
     return render_template("main.html", cats = cat)
 
 #Добавление в карзину
 @login_required
 @app.route('/addtocart/<id>/')
 def addtocart(id):
-    session["cart"] = id
-    return redirect("/cart")
-
+    if session.get("cart"):
+        session["cart"] += id + ' '
+    else:
+        session["cart"] = id + ' '
+    flash('Блюдо добавлено!')
+    return redirect("/")
+#Удаление из карзину
+@login_required
+@app.route('/delfromcart/<id>/')
+def delfromcart(id):
+    cards = session.get("cart").split()
+    cards.remove(id)
+    session['cart'] = " ".join(cards)
+    flash('Блюдо удалено из корзины')
+    return redirect("/cart/")
 
 @login_required
 @app.route('/cart/')
 def cart():
-
-    return render_template("cart.html")
+    if session.get("cart"):
+        list_meals = session.get("cart").split()
+        meals = []
+        summ_cart = 0
+        for item in list_meals:
+            meals.append(Meal.query.get(int(item)))
+        for meal in meals:
+            summ_cart += meal.price
+    else:
+        meals = None
+        summ_cart = None
+    return render_template("cart.html", meals=meals, summ_cart=summ_cart)
 
 
 # ------------------------------------------------------
@@ -68,16 +98,17 @@ def login():
                 "id": user.id,
                 "mail": user.mail,
                 "role": user.role,
+                'orders':user.orders_id
             }
             return redirect("/")
 
-        form.username.errors.append("Не верное имя или пароль")
+        form.mail.errors.append("Не верное имя или пароль")
 
     return render_template("login.html", form=form)
 
 # ------------------------------------------------------
 # Страница выхода из админки
-@app.route('/logout', methods=["POST"])
+@app.route('/logout')
 @login_required 
 def logout():
     session.pop("user")
