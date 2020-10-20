@@ -1,7 +1,7 @@
 import re
 
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField
+from wtforms import StringField, PasswordField, IntegerField
 from wtforms.validators import DataRequired, Length, EqualTo, ValidationError
 
 def password_check(form, field):
@@ -17,6 +17,12 @@ def password_check(form, field):
 class LoginForm(FlaskForm):
     mail = StringField("Имя:", validators=[DataRequired()])
     password = PasswordField("Пароль:", validators=[DataRequired()])
+
+class OrderForm(FlaskForm):
+    name = StringField("Имя:", validators=[DataRequired()])
+    address = StringField("Адрес:", validators=[DataRequired()])
+    tel = StringField("Телефон:", validators=[DataRequired()])
+
 
 class RegistrationForm(FlaskForm):
     mail = StringField(
@@ -36,6 +42,7 @@ class RegistrationForm(FlaskForm):
         ]
     )
     confirm_password = PasswordField("Пароль ещё раз:")
+
 
 class ChangePasswordForm(FlaskForm):
     password = PasswordField(

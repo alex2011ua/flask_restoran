@@ -3,33 +3,48 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Stepik Delivery</title>
+  <title>AlexUA Delivery</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="/static/index.css">
-
 </head>
-
 <body>
 <header class="container mt-3">
     <nav class="py-1 navbar navbar-dark bg-dark">
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        <a href="/" class=" h5 my-2 text-white bg-dark">Stepik Delivery</a>
+        <a href="{{ url_for('home') }}" class=" h5 my-2 text-white bg-dark">AlexUA Delivery</a>
       </ul>
-
         {% if session.user %}
-            <a href="/cart" class="btn btn-warning btn-sm ml-4">КОРЗИНА</a>
-            {% if session.user.orders %}
-       <p class="my-2 text-white bg-dark "> ({{ session.user.orders.len() }} блюда ??? руб.)</p>
+            {% if session.count %}
+                {% if session.count > 0 %}
+                    <p class="my-2 text-white bg-dark "> ({{ session.count }} блюда в корзине на сумму {{ session.summ }} грн.)</p>
+                    <a href="{{ url_for('cart') }}" class="btn btn-warning btn-sm ml-4">КОРЗИНА</a>
+                {% elif session.count ==0 %}
+                    <p class="my-2 text-white bg-dark "> Добавьте блюдо в корзину!</p>
+                {% endif %}
+            {% else %}
+                <p class="my-2 text-white bg-dark "> Добавьте блюдо в корзину!</p>
             {% endif %}
+        {% else %}
+            <p class="my-2 text-white bg-dark "> Добавьте блюдо в корзину!</p>
         {% endif %}
-        {% if  not session.user %}<a href="/login" class="btn btn-warning btn-sm ml-4">Войти</a> {% endif %}
-      {% if session.user %}<a href="/logout" class="btn btn-light btn-sm ml-4">Выйти</a> {% endif %}
+        {% if session.user %}
+            {% if session.user.orders %}
+            <a href="{{ url_for('account') }}" class="btn btn-info btn-sm ml-4">Заказы</a>
+            {% endif %}
+            <a href="{{ url_for('logout') }}" class="btn btn-light btn-sm ml-4">Выйти</a> {% endif %}
+        {% if  not session.user %}<a href="{{ url_for('login') }}" class="btn btn-warning btn-sm ml-4">Войти</a> {% endif %}
     </nav>
-  </header>
-
+</header>
 
 {% block main %}
 {% endblock %}
-
+<footer class="footer">
+    <nav class="container navbar navbar-light bg-light">
+      <ul class="navbar-nav mr-auto">
+        <p class="h4 nav-link">AlexUA Delivery</p>
+      </ul>
+      <a class="text-muted" href="{{ url_for('home') }}">Project author 2020</a>
+    </nav>
+  </footer>
 </body>
 </html>

@@ -2,8 +2,12 @@
 
 {% block main %}
 {% include 'start.html' %}
-    {% if  not session.user %}<div class="alert alert-warning" role="alert">Чтобы сделать заказ – <a href="/login.html">войдите</a> или <a href="/register.html">зарегистрируйтесь</a></div> {% endif %}
-    {% with messages = get_flashed_messages() %}
+    {% if  not session.user %}
+        <div class="alert alert-warning" role="alert">Чтобы сделать заказ –
+            <a href="/login">войдите</a> или
+            <a href="/registration">зарегистрируйтесь</a></div>
+    {% endif %}
+{% with messages = get_flashed_messages() %}
   {% if messages %}
     <ul class=flashes>
     {% for message in messages %}
@@ -12,9 +16,10 @@
     </ul>
   {% endif %}
 {% endwith %}
-    <main class="container mt-3">
+
+<main class="container mt-3">
 <section>
-{%  for cat in cats %}
+{% for cat in cats %}
   <h3 class="my-4">{{ cat.title }}</h3>
   <div class="row mt-4">
       {% for meals in cat.meals %}
@@ -33,15 +38,7 @@
 {% endfor %}
 </section>
 
-
 </main>
 
-  <footer class="footer">
-    <nav class="container navbar navbar-light bg-light">
-      <ul class="navbar-nav mr-auto">
-        <p class="h4 nav-link">AlexUA Delivery</p>
-      </ul>
-      <a class="text-muted" href="/">Project author 2020</a>
-    </nav>
-  </footer>
+
 {% endblock %}
