@@ -2,11 +2,18 @@
 
 {% block main %}
 {% include 'start.html' %}
-    {% if  not session.user %}
+
+
+
+<main class="container mt-3">
+<section>
+
+{% if  not session.user %}
         <div class="alert alert-warning" role="alert">Чтобы сделать заказ –
-            <a href="/login">войдите</a> или
-            <a href="/registration">зарегистрируйтесь</a></div>
-    {% endif %}
+            <a href="{{ url_for('login') }}">войдите</a> или
+            <a href="{{ url_for('registration') }}">зарегистрируйтесь</a></div>
+
+{% endif %}
 {% with messages = get_flashed_messages() %}
   {% if messages %}
     <ul class=flashes>
@@ -17,8 +24,6 @@
   {% endif %}
 {% endwith %}
 
-<main class="container mt-3">
-<section>
 {% for cat in cats %}
   <h3 class="my-4">{{ cat.title }}</h3>
   <div class="row mt-4">
@@ -29,7 +34,7 @@
             <div class="card-body">
               <h4 class="h5 card-title">{{ meals.title }}</h4>
               <p class="card-text"> {{ meals.description }}</p>
-              <a href="/addtocart/{{ meals.id }}/" class="btn btn-danger">В корзину</a>
+              <a href="{{ url_for('addtocart', id=meals.id) }}" class="btn btn-danger">В корзину</a>
             </div>
           </div>
       </div>

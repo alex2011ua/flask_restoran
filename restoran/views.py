@@ -1,11 +1,13 @@
 from functools import wraps
 from datetime import datetime
-
+import add_base
 from flask import abort, flash, session, redirect, request, render_template, url_for
 
 from restoran import app, db
 from restoran.models import User, Category, Meal, Order
 from restoran.forms import LoginForm, RegistrationForm, ChangePasswordForm, OrderForm
+
+from flask_admin.contrib.sqla import ModelView
 
 # ------------------------------------------------------
 # Декораторы авторизации
@@ -52,8 +54,7 @@ def clear_cart():
 #@login_required
 def home():
     cat = Category.query.all()
-
-    print(session)
+    #add_base.add()
     return render_template("main.html",
                            cats = cat,
                            )
@@ -87,6 +88,7 @@ def delfromcart(id):
     flash('Блюдо удалено из корзины')
     return redirect(url_for('cart'))
 
+#подсчет суммы покупки, список товаров и названий
 def count_summ_title_meals():
     list_meals = session.get("cart")
     meals = []
@@ -218,3 +220,17 @@ def change_password():
             return redirect(url_for('home'))
 
     return render_template("change_password.html", form=form)
+
+
+
+
+class MyUserView(ModelView):
+    def is_accessible(self):
+        if not session.get('user'):
+            return None
+        if session.get('user')["role"] != "admin":
+            return None
+        return True
+
+
+    # прочие свойства

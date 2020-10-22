@@ -1,10 +1,15 @@
 import os
+from os import environ
 
-current_path = os.path.dirname(os.path.realpath(__file__))
-db_path = "sqlite:///" + current_path + "\\test1.db"
+
+username = environ.get('usr')
+password = environ.get('pass')
+servername = environ.get('host')
+db_name = environ.get('db_name')
+
 
 class Config:
 
-    SECRET_KEY= "secret_key"
-    SQLALCHEMY_DATABASE_URI = db_path
+    SECRET_KEY = environ.get('secret_key')
+    SQLALCHEMY_DATABASE_URI = f'mysql://{username}:{password}@{servername}/{db_name}'
     SQLALCHEMY_TRACK_MODIFICATIONS = False

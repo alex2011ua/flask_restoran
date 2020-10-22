@@ -32,9 +32,9 @@ class Meal(db.Model):
     __tablename__ = 'meals'
 
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(32), nullable=False, unique=True)
+    title = db.Column(db.String(128), nullable=False, unique=True)
     price = db.Column(db.DECIMAL(20, 2), nullable=False)
-    description = db.Column(db.String(128), nullable=False)
+    description = db.Column(db.String(256), nullable=False)
     picture = db.Column(db.String(128), nullable=False)
     category = db.relationship("Category")
     category_id = db.Column(db.Integer, db.ForeignKey("categorys.id"))
@@ -55,7 +55,9 @@ class Order(db.Model):
     summ = db.Column(db.DECIMAL(20, 2), nullable = False)
     status = db.Column(db.String(128))
     email = db.Column(db.String(32))
-    tel = db.Column(db.Integer())
+    tel = db.Column(db.String(32))
     addres = db.Column(db.String(128))
     meails_list = db.Column(db.String(128))
-    
+
+
+

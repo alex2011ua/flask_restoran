@@ -7,3 +7,6 @@ Werkzeug==1.0.1
 Flask-SQLAlchemy
 Flask-WTF
 Flask-Migrate
+pymysql
+python-dotenv
+flask-admin
