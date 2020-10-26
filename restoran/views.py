@@ -1,5 +1,6 @@
 from functools import wraps
 from datetime import datetime
+
 import add_base
 from flask import abort, flash, session, redirect, request, render_template, url_for
 
@@ -9,7 +10,7 @@ from restoran.forms import LoginForm, RegistrationForm, ChangePasswordForm, Orde
 
 from flask_admin.contrib.sqla import ModelView
 
-# ------------------------------------------------------
+
 # Декораторы авторизации
 def login_required(f):
     @wraps(f)
@@ -18,48 +19,55 @@ def login_required(f):
         if not session.get('user'):
             return redirect(url_for('login'))
         return f(*args, **kwargs)
+
     return decorated_function
+
 
 def admin_only(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
         print("admin_only")
         if session.get('user')["role"] != "admin":
-            abort(403, description="Вам сюда нельзя")
+            abort(403, description = "Вам сюда нельзя")
         return f(*args, **kwargs)
+
     return decorated_function
 
 
 @app.route('/account')
 @login_required
 def account():
-    return render_template("account.html")
+    print(session.get('user')['mail'])
+    orders = Order.query.filter_by(email= session.get('user')['mail']).limit(10)
+
+    return render_template("account.html", orders=orders)
 
 
-
-# ------------------------------------------------------
-#clear_cart
-@app.route('/cls/')
-def clear_cart():
+# clear_cart
+@app.route('/cls/<where>/')
+def clear_cart(where):
     if session["cart"]:
         del session["cart"]
     if session["count"]:
         del session["count"]
     if session['summ']:
         del session['summ']
-    return redirect(url_for('home'))
+
+    return redirect(url_for(where))
+
 
 # Страница админки
 @app.route('/')
-#@login_required
+
 def home():
     cat = Category.query.all()
-    #add_base.add()
+    # add_base.add()
     return render_template("main.html",
                            cats = cat,
                            )
 
-#Добавление в карзину
+
+# Добавление в карзину
 @login_required
 @app.route('/addtocart/<id>/')
 def addtocart(id):
@@ -75,7 +83,8 @@ def addtocart(id):
     flash('Блюдо добавлено!')
     return redirect(url_for('home'))
 
-#Удаление из карзину
+
+# Удаление из карзину
 @login_required
 @app.route('/delfromcart/<id>/')
 def delfromcart(id):
@@ -88,7 +97,8 @@ def delfromcart(id):
     flash('Блюдо удалено из корзины')
     return redirect(url_for('cart'))
 
-#подсчет суммы покупки, список товаров и названий
+
+# подсчет суммы покупки, список товаров и названий
 def count_summ_title_meals():
     list_meals = session.get("cart")
     meals = []
@@ -101,8 +111,9 @@ def count_summ_title_meals():
         meals_title.append(meal.title)
     return summ_cart, meals_title, meals
 
+
 @login_required
-@app.route('/cart/', methods=["GET", "POST"])
+@app.route('/cart/', methods = ["GET", "POST"])
 def cart():
     if session.get("cart"):
         form = OrderForm()
@@ -110,8 +121,9 @@ def cart():
 
         if request.method == "POST":
             if not form.validate_on_submit():
-                return render_template("cart.html", form=form, meals = meals, summ_cart = summ_cart)
-            user = User.query.filter_by(mail=session.get('user')['mail']).first()
+                return render_template("cart.html", form = form, meals = meals,
+                                       summ_cart = summ_cart)
+            user = User.query.filter_by(mail = session.get('user')['mail']).first()
             order = Order()
             order.date = datetime.now()
             order.summ = summ_cart
@@ -126,19 +138,19 @@ def cart():
             db.session.commit()
             session["user"]['orders'] = order.id
             flash("Заказ отправлен!")
-            return redirect(url_for('clear_cart'))
-        return render_template("cart.html", form=form, meals = meals, summ_cart = summ_cart)
-
-
+            return redirect(url_for('ordered'))
+        return render_template("cart.html", form = form, meals = meals,
+                               summ_cart = summ_cart)
     else:
         meals = None
         summ_cart = None
-        return render_template("cart.html", meals=meals, summ_cart=summ_cart)
+        return render_template("cart.html", meals = meals, summ_cart = summ_cart)
 
-
-# ------------------------------------------------------
+@app.route('/ordered/')
+def ordered():
+    return render_template('ordered.html')
 # Страница аутентификации
-@app.route("/login", methods=["GET", "POST"])
+@app.route("/login", methods = ["GET", "POST"])
 def login():
     if session.get("user"):
         return redirect(url_for('home'))
@@ -147,9 +159,9 @@ def login():
 
     if request.method == "POST":
         if not form.validate_on_submit():
-            return render_template("login.html", form=form)
-        
-        user = User.query.filter_by(mail=form.mail.data).first()
+            return render_template("login.html", form = form)
+
+        user = User.query.filter_by(mail = form.mail.data).first()
         if user and user.password_valid(form.password.data):
             session["user"] = {
                 "id": user.id,
@@ -161,33 +173,30 @@ def login():
 
         form.mail.errors.append("Не верное имя или пароль")
 
-    return render_template("login.html", form=form)
+    return render_template("login.html", form = form)
 
-# ------------------------------------------------------
+
 # Страница выхода из админки
 @app.route('/logout')
-@login_required 
+@login_required
 def logout():
     session.pop("user")
     return redirect(url_for('home'))
 
 
-# ------------------------------------------------------
 # Страница добавления пользователя
-@app.route("/registration", methods=["GET", "POST"])
-#@admin_only
-#@login_required
+@app.route("/registration", methods = ["GET", "POST"])
 def registration():
     form = RegistrationForm()
 
     if request.method == "POST":
         if not form.validate_on_submit():
-            return render_template("register.html", form=form)
+            return render_template("register.html", form = form)
 
-        user = User.query.filter_by(mail=form.mail.data).first()
+        user = User.query.filter_by(mail = form.mail.data).first()
         if user:
             form.mail.errors.append("Пользователь с таким именем уже существует")
-            return render_template("register.html", form=form)
+            return render_template("register.html", form = form)
 
         user = User()
         user.mail = form.mail.data
@@ -196,22 +205,24 @@ def registration():
         db.session.add(user)
         db.session.commit()
 
-        flash(f"Пользователь: {form.mail.data} с паролем: {form.password.data} зарегистрирован")
+        flash(
+            f"Пользователь: {form.mail.data} "
+            f"с паролем: {form.password.data} зарегистрирован")
         return redirect(url_for('home'))
 
-    return render_template("register.html", form=form)
+    return render_template("register.html", form = form)
 
-# ------------------------------------------------------
+
 # Страница смены пароля
-@app.route("/change-password", methods=["GET", "POST"])
-@login_required 
+@app.route("/change-password", methods = ["GET", "POST"])
+@login_required
 def change_password():
     form = ChangePasswordForm()
 
     if request.method == "POST":
         if form.validate_on_submit():
             # Обновляем пароль у текущего пользователя по его идентификатору
-            user = User.query.filter_by(id=session["user"]["id"]).first()
+            user = User.query.filter_by(id = session["user"]["id"]).first()
             user.password = form.password.data
             db.session.add(user)
             db.session.commit()
@@ -219,9 +230,7 @@ def change_password():
             flash(f"Ваш пароль изменён")
             return redirect(url_for('home'))
 
-    return render_template("change_password.html", form=form)
-
-
+    return render_template("change_password.html", form = form)
 
 
 class MyUserView(ModelView):
@@ -231,6 +240,3 @@ class MyUserView(ModelView):
         if session.get('user')["role"] != "admin":
             return None
         return True
-
-
-    # прочие свойства

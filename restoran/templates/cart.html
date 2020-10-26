@@ -78,7 +78,7 @@
     </table>
     <hr>
     <p class="display-4 my-2 ">{{ summ_cart }} грн.</p>
-      <a href="{{ url_for('clear_cart') }}" class="btn btn-danger btn-sm ml-4">Очистить корзину</a>
+      <a href="{{ url_for('clear_cart', where='home') }}" class="btn btn-danger btn-sm ml-4">Очистить корзину</a>
   {% else %}
           <h4 class="mb-3 col-7 mb-5">Корзина пуста</h4>
       {% endif %}

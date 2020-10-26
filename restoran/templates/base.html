@@ -5,7 +5,8 @@
   <meta charset="UTF-8">
   <title>AlexUA Delivery</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="/static/index.css">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('home') }}/static/index.css">
+  <link rel="icon" type="image/png" href="{{ url_for('home') }}/static/favicon.ico" >
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-180075682-1"></script>
     <script>
@@ -22,26 +23,32 @@
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <a href="{{ url_for('home') }}" class=" h5 my-2 text-white bg-dark">AlexUA Delivery</a>
       </ul>
-        {% if session.user %}
-            {% if session.count %}
-                {% if session.count > 0 %}
-                    <p class="my-2 text-white bg-dark "> ({{ session.count }} блюда в корзине на сумму {{ session.summ }} грн.)</p>
-                    <a href="{{ url_for('cart') }}" class="btn btn-warning btn-sm ml-4">КОРЗИНА</a>
-                {% elif session.count ==0 %}
-                    <p class="my-2 text-white bg-dark "> Добавьте блюдо в корзину!</p>
-                {% endif %}
-            {% else %}
+        {% if session.count %}
+            {% if session.count > 0 %}
+                <p class="my-1 text-white bg-dark "> ({{ session.count }} блюда в корзине на сумму {{ session.summ }} грн.)</p>
+
+            {% elif session.count == 0 %}
                 <p class="my-2 text-white bg-dark "> Добавьте блюдо в корзину!</p>
             {% endif %}
         {% else %}
             <p class="my-2 text-white bg-dark "> Добавьте блюдо в корзину!</p>
         {% endif %}
+
+
         {% if session.user %}
+            {% if session.user.role == 'admin' %}
+                <a href="{{ url_for('home') }}admin" class="btn btn-danger btn-sm ml-4">ADMIN</a>
+              {% else %}
+            <a href="{{ url_for('cart') }}" class="btn btn-warning btn-sm ml-4">КОРЗИНА</a>
             {% if session.user.orders %}
-            <a href="{{ url_for('account') }}" class="btn btn-info btn-sm ml-4">Заказы</a>
+                <a href="{{ url_for('account') }}" class="btn btn-info btn-sm ml-4">Заказы</a>
             {% endif %}
-            <a href="{{ url_for('logout') }}" class="btn btn-light btn-sm ml-4">Выйти</a> {% endif %}
-        {% if  not session.user %}<a href="{{ url_for('login') }}" class="btn btn-warning btn-sm ml-4">Войти</a> {% endif %}
+                {% endif %}
+            <a href="{{ url_for('logout') }}" class="btn btn-light btn-sm ml-4">Выйти</a>
+        {% endif %}
+        {% if  not session.user %}
+            <a href="{{ url_for('login') }}" class="btn btn-warning btn-sm ml-4">Войти</a>
+        {% endif %}
     </nav>
 </header>
 

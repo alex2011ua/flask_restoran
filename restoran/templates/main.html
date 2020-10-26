@@ -30,7 +30,7 @@
       {% for meals in cat.meals %}
       <div class="col-12 col-md-4">
           <div class="card mb-3">
-            <img src=static/pictures/{{ meals.picture}} width="300" height="200" class="card-img-top" alt="">
+            <img src={{ url_for('home') }}static/pictures/{{ meals.picture}} width="300" height="200" class="card-img-top" alt="">
             <div class="card-body">
               <h4 class="h5 card-title">{{ meals.title }}</h4>
               <p class="card-text"> {{ meals.description }}</p>

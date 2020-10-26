@@ -1,0 +1,404 @@
+App 1654628 output: /opt/passenger-5.3.7-9.el7.cloudlinux/src/helper-scripts/wsgi-loader.py:26: DeprecationWarning: the imp module is deprecated in favour of importlib; see the module's documentation for alternative uses
+App 1654628 output:   import sys, os, io, re, imp, threading, signal, traceback, socket, select, struct, logging, errno
+App 1654628 output: Traceback (most recent call last):
+App 1654628 output:   File "/opt/passenger-5.3.7-9.el7.cloudlinux/src/helper-scripts/wsgi-loader.py", line 369, in <module>
+App 1654628 output:     app_module = load_app()
+App 1654628 output: 
+App 1654628 output:   File "/opt/passenger-5.3.7-9.el7.cloudlinux/src/helper-scripts/wsgi-loader.py", line 76, in load_app
+App 1654628 output:     return imp.load_source('passenger_wsgi', startup_file)
+App 1654628 output: 
+App 1654628 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib64/python3.7/imp.py", line 171, in load_source
+App 1654628 output:     module = _load(spec)
+App 1654628 output:   File "<frozen importlib._bootstrap>", line 696, in _load
+App 1654628 output:   File "<frozen importlib._bootstrap>", line 677, in _load_unlocked
+App 1654628 output:   File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+App 1654628 output:   File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+App 1654628 output:   File "/home/alexua75/flask/restoran/passenger_wsgi.py", line 9, in <module>
+App 1654628 output:     application = wsgi.app
+App 1654628 output: 
+App 1654628 output: AttributeError: module 'wsgi' has no attribute 'app'
+App 1655881 output: /opt/passenger-5.3.7-9.el7.cloudlinux/src/helper-scripts/wsgi-loader.py:26: DeprecationWarning: the imp module is deprecated in favour of importlib; see the module's documentation for alternative uses
+App 1655881 output:   import sys, os, io, re, imp, threading, signal, traceback, socket, select, struct, logging, errno
+App 1655881 output: Traceback (most recent call last):
+App 1655881 output:   File "/opt/passenger-5.3.7-9.el7.cloudlinux/src/helper-scripts/wsgi-loader.py", line 369, in <module>
+App 1655881 output:     app_module = load_app()
+App 1655881 output: 
+App 1655881 output:   File "/opt/passenger-5.3.7-9.el7.cloudlinux/src/helper-scripts/wsgi-loader.py", line 76, in load_app
+App 1655881 output:     
+App 1655881 output: return imp.load_source('passenger_wsgi', startup_file)
+App 1655881 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib64/python3.7/imp.py", line 171, in load_source
+App 1655881 output:     module = _load(spec)
+App 1655881 output: 
+App 1655881 output:   File "<frozen importlib._bootstrap>", line 696, in _load
+App 1655881 output:   File "<frozen importlib._bootstrap>", line 677, in _load_unlocked
+App 1655881 output:   File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+App 1655881 output:   File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+App 1655881 output:   File "/home/alexua75/flask/restoran/passenger_wsgi.py", line 9, in <module>
+App 1655881 output:     
+App 1655881 output: application = wsgi.app
+App 1655881 output: AttributeError: 
+App 1655881 output: module 'wsgi' has no attribute 'app'
+App 1662208 output: /opt/passenger-5.3.7-9.el7.cloudlinux/src/helper-scripts/wsgi-loader.py:26: DeprecationWarning: the imp module is deprecated in favour of importlib; see the module's documentation for alternative uses
+App 1662208 output:   import sys, os, io, re, imp, threading, signal, traceback, socket, select, struct, logging, errno
+App 1663473 output: /opt/passenger-5.3.7-9.el7.cloudlinux/src/helper-scripts/wsgi-loader.py:26: DeprecationWarning: the imp module is deprecated in favour of importlib; see the module's documentation for alternative uses
+App 1663473 output:   import sys, os, io, re, imp, threading, signal, traceback, socket, select, struct, logging, errno
+App 1663473 output: [ pid=1663473, time=2020-10-22 13:44:31,746 ]: Exception on / [GET]
+App 1663473 output: Traceback (most recent call last):
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1277, in _execute_context
+App 1663473 output:     cursor, statement, parameters, context
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 593, in do_execute
+App 1663473 output:     cursor.execute(statement, parameters)
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/MySQLdb/cursors.py", line 206, in execute
+App 1663473 output:     res = self._query(query)
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/MySQLdb/cursors.py", line 319, in _query
+App 1663473 output:     db.query(q)
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/MySQLdb/connections.py", line 259, in query
+App 1663473 output:     _mysql.connection.query(self, query)
+App 1663473 output: MySQLdb._exceptions.ProgrammingError: (1146, "Table 'alexua75_restoranbd.categorys' doesn't exist")
+App 1663473 output: 
+App 1663473 output: The above exception was the direct cause of the following exception:
+App 1663473 output: 
+App 1663473 output: Traceback (most recent call last):
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/flask/app.py", line 2447, in wsgi_app
+App 1663473 output:     response = self.full_dispatch_request()
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/flask/app.py", line 1952, in full_dispatch_request
+App 1663473 output:     rv = self.handle_user_exception(e)
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/flask/app.py", line 1821, in handle_user_exception
+App 1663473 output:     reraise(exc_type, exc_value, tb)
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+App 1663473 output:     raise value
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+App 1663473 output:     rv = self.dispatch_request()
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+App 1663473 output:     return self.view_functions[rule.endpoint](**req.view_args)
+App 1663473 output:   File "/home/alexua75/flask/restoran/restoran/views.py", line 56, in home
+App 1663473 output:     cat = Category.query.all()
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 3373, in all
+App 1663473 output:     return list(self)
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 3535, in __iter__
+App 1663473 output:     return self._execute_and_instances(context)
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 3560, in _execute_and_instances
+App 1663473 output:     result = conn.execute(querycontext.statement, self._params)
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1011, in execute
+App 1663473 output:     return meth(self, multiparams, params)
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 298, in _execute_on_connection
+App 1663473 output:     return connection._execute_clauseelement(self, multiparams, params)
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1130, in _execute_clauseelement
+App 1663473 output:     distilled_params,
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1317, in _execute_context
+App 1663473 output:     e, statement, parameters, cursor, context
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1511, in _handle_dbapi_exception
+App 1663473 output:     sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 182, in raise_
+App 1663473 output:     raise exception
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1277, in _execute_context
+App 1663473 output:     cursor, statement, parameters, context
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 593, in do_execute
+App 1663473 output:     cursor.execute(statement, parameters)
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/MySQLdb/cursors.py", line 206, in execute
+App 1663473 output:     res = self._query(query)
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/MySQLdb/cursors.py", line 319, in _query
+App 1663473 output:     db.query(q)
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/MySQLdb/connections.py", line 259, in query
+App 1663473 output:     _mysql.connection.query(self, query)
+App 1663473 output: sqlalchemy.exc.ProgrammingError: (MySQLdb._exceptions.ProgrammingError) (1146, "Table 'alexua75_restoranbd.categorys' doesn't exist")
+App 1663473 output: [SQL: SELECT categorys.id AS categorys_id, categorys.title AS categorys_title 
+App 1663473 output: FROM categorys]
+App 1663473 output: (Background on this error at: http://sqlalche.me/e/13/f405)
+App 1663473 output: [ pid=1663473, time=2020-10-22 13:45:18,797 ]: Exception on / [GET]
+App 1663473 output: Traceback (most recent call last):
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1277, in _execute_context
+App 1663473 output:     cursor, statement, parameters, context
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 593, in do_execute
+App 1663473 output:     cursor.execute(statement, parameters)
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/MySQLdb/cursors.py", line 206, in execute
+App 1663473 output:     res = self._query(query)
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/MySQLdb/cursors.py", line 319, in _query
+App 1663473 output:     db.query(q)
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/MySQLdb/connections.py", line 259, in query
+App 1663473 output:     _mysql.connection.query(self, query)
+App 1663473 output: MySQLdb._exceptions.ProgrammingError: (1146, "Table 'alexua75_restoranbd.categorys' doesn't exist")
+App 1663473 output: 
+App 1663473 output: The above exception was the direct cause of the following exception:
+App 1663473 output: 
+App 1663473 output: Traceback (most recent call last):
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/flask/app.py", line 2447, in wsgi_app
+App 1663473 output:     response = self.full_dispatch_request()
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/flask/app.py", line 1952, in full_dispatch_request
+App 1663473 output:     rv = self.handle_user_exception(e)
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/flask/app.py", line 1821, in handle_user_exception
+App 1663473 output:     reraise(exc_type, exc_value, tb)
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+App 1663473 output:     raise value
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+App 1663473 output:     rv = self.dispatch_request()
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+App 1663473 output:     return self.view_functions[rule.endpoint](**req.view_args)
+App 1663473 output:   File "/home/alexua75/flask/restoran/restoran/views.py", line 56, in home
+App 1663473 output:     cat = Category.query.all()
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 3373, in all
+App 1663473 output:     return list(self)
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 3535, in __iter__
+App 1663473 output:     return self._execute_and_instances(context)
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 3560, in _execute_and_instances
+App 1663473 output:     result = conn.execute(querycontext.statement, self._params)
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1011, in execute
+App 1663473 output:     return meth(self, multiparams, params)
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 298, in _execute_on_connection
+App 1663473 output:     return connection._execute_clauseelement(self, multiparams, params)
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1130, in _execute_clauseelement
+App 1663473 output:     distilled_params,
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1317, in _execute_context
+App 1663473 output:     e, statement, parameters, cursor, context
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1511, in _handle_dbapi_exception
+App 1663473 output:     sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 182, in raise_
+App 1663473 output:     raise exception
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1277, in _execute_context
+App 1663473 output:     cursor, statement, parameters, context
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 593, in do_execute
+App 1663473 output:     cursor.execute(statement, parameters)
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/MySQLdb/cursors.py", line 206, in execute
+App 1663473 output:     res = self._query(query)
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/MySQLdb/cursors.py", line 319, in _query
+App 1663473 output:     db.query(q)
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/MySQLdb/connections.py", line 259, in query
+App 1663473 output:     _mysql.connection.query(self, query)
+App 1663473 output: sqlalchemy.exc.ProgrammingError: (MySQLdb._exceptions.ProgrammingError) (1146, "Table 'alexua75_restoranbd.categorys' doesn't exist")
+App 1663473 output: [SQL: SELECT categorys.id AS categorys_id, categorys.title AS categorys_title 
+App 1663473 output: FROM categorys]
+App 1663473 output: (Background on this error at: http://sqlalche.me/e/13/f405)
+App 1663473 output: [ pid=1663473, time=2020-10-22 13:46:37,668 ]: Exception on / [GET]
+App 1663473 output: Traceback (most recent call last):
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1277, in _execute_context
+App 1663473 output:     cursor, statement, parameters, context
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 593, in do_execute
+App 1663473 output:     cursor.execute(statement, parameters)
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/MySQLdb/cursors.py", line 206, in execute
+App 1663473 output:     res = self._query(query)
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/MySQLdb/cursors.py", line 319, in _query
+App 1663473 output:     db.query(q)
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/MySQLdb/connections.py", line 259, in query
+App 1663473 output:     _mysql.connection.query(self, query)
+App 1663473 output: MySQLdb._exceptions.ProgrammingError: (1146, "Table 'alexua75_restoranbd.categorys' doesn't exist")
+App 1663473 output: 
+App 1663473 output: The above exception was the direct cause of the following exception:
+App 1663473 output: 
+App 1663473 output: Traceback (most recent call last):
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/flask/app.py", line 2447, in wsgi_app
+App 1663473 output:     response = self.full_dispatch_request()
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/flask/app.py", line 1952, in full_dispatch_request
+App 1663473 output:     rv = self.handle_user_exception(e)
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/flask/app.py", line 1821, in handle_user_exception
+App 1663473 output:     reraise(exc_type, exc_value, tb)
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+App 1663473 output:     raise value
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+App 1663473 output:     rv = self.dispatch_request()
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+App 1663473 output:     return self.view_functions[rule.endpoint](**req.view_args)
+App 1663473 output:   File "/home/alexua75/flask/restoran/restoran/views.py", line 56, in home
+App 1663473 output:     cat = Category.query.all()
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 3373, in all
+App 1663473 output:     return list(self)
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 3535, in __iter__
+App 1663473 output:     return self._execute_and_instances(context)
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 3560, in _execute_and_instances
+App 1663473 output:     result = conn.execute(querycontext.statement, self._params)
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1011, in execute
+App 1663473 output:     return meth(self, multiparams, params)
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 298, in _execute_on_connection
+App 1663473 output:     return connection._execute_clauseelement(self, multiparams, params)
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1130, in _execute_clauseelement
+App 1663473 output:     distilled_params,
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1317, in _execute_context
+App 1663473 output:     e, statement, parameters, cursor, context
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1511, in _handle_dbapi_exception
+App 1663473 output:     sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 182, in raise_
+App 1663473 output:     raise exception
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1277, in _execute_context
+App 1663473 output:     cursor, statement, parameters, context
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 593, in do_execute
+App 1663473 output:     cursor.execute(statement, parameters)
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/MySQLdb/cursors.py", line 206, in execute
+App 1663473 output:     res = self._query(query)
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/MySQLdb/cursors.py", line 319, in _query
+App 1663473 output:     db.query(q)
+App 1663473 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/MySQLdb/connections.py", line 259, in query
+App 1663473 output:     _mysql.connection.query(self, query)
+App 1663473 output: sqlalchemy.exc.ProgrammingError: (MySQLdb._exceptions.ProgrammingError) (1146, "Table 'alexua75_restoranbd.categorys' doesn't exist")
+App 1663473 output: [SQL: SELECT categorys.id AS categorys_id, categorys.title AS categorys_title 
+App 1663473 output: FROM categorys]
+App 1663473 output: (Background on this error at: http://sqlalche.me/e/13/f405)
+App 1782071 output: /opt/passenger-5.3.7-9.el7.cloudlinux/src/helper-scripts/wsgi-loader.py:26: DeprecationWarning: the imp module is deprecated in favour of importlib; see the module's documentation for alternative uses
+App 1782071 output:   import sys, os, io, re, imp, threading, signal, traceback, socket, select, struct, logging, errno
+App 1782071 output: Traceback (most recent call last):
+App 1782071 output:   File "/opt/passenger-5.3.7-9.el7.cloudlinux/src/helper-scripts/wsgi-loader.py", line 369, in <module>
+App 1782071 output:     app_module = load_app()
+App 1782071 output: 
+App 1782071 output:   File "/opt/passenger-5.3.7-9.el7.cloudlinux/src/helper-scripts/wsgi-loader.py", line 76, in load_app
+App 1782071 output:     return imp.load_source('passenger_wsgi', startup_file)
+App 1782071 output: 
+App 1782071 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib64/python3.7/imp.py", line 171, in load_source
+App 1782071 output:     module = _load(spec)
+App 1782071 output: 
+App 1782071 output:   File "<frozen importlib._bootstrap>", line 696, in _load
+App 1782071 output:   File "<frozen importlib._bootstrap>", line 677, in _load_unlocked
+App 1782071 output:   File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+App 1782071 output:   File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+App 1782071 output:   File "/home/alexua75/flask/restoran/passenger_wsgi.py", line 8, in <module>
+App 1782071 output:     
+App 1782071 output: wsgi = imp.load_source('wsgi', 'app.py')
+App 1782071 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib64/python3.7/imp.py", line 171, in load_source
+App 1782071 output:     module = _load(spec)
+App 1782071 output: 
+App 1782071 output:   File "<frozen importlib._bootstrap>", line 696, in _load
+App 1782071 output:   File "<frozen importlib._bootstrap>", line 677, in _load_unlocked
+App 1782071 output:   File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+App 1782071 output:   File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+App 1782071 output:   File "app.py", line 1, in <module>
+App 1782071 output:     import restoran
+App 1782071 output:   File "/home/alexua75/flask/restoran/restoran/__init__.py", line 6, in <module>
+App 1782071 output:     from restoran.models import db
+App 1782071 output: 
+App 1782071 output:   File "/home/alexua75/flask/restoran/restoran/models.py", line 62, in <module>
+App 1782071 output:     
+App 1782071 output: db.create_all()
+App 1782071 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/flask_sqlalchemy/__init__.py", line 1039, in create_all
+App 1782071 output:     
+App 1782071 output: self._execute_for_all_tables(app, bind, 'create_all')
+App 1782071 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/flask_sqlalchemy/__init__.py", line 1016, in _execute_for_all_tables
+App 1782071 output:     app = self.get_app(app)
+App 1782071 output: 
+App 1782071 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/flask_sqlalchemy/__init__.py", line 988, in get_app
+App 1782071 output:     'No application found. Either work inside a view function or push'
+App 1782071 output: 
+App 1782071 output: RuntimeError: No application found. Either work inside a view function or push an application context. See http://flask-sqlalchemy.pocoo.org/contexts/.
+App 1783664 output: /opt/passenger-5.3.7-9.el7.cloudlinux/src/helper-scripts/wsgi-loader.py:26: DeprecationWarning: the imp module is deprecated in favour of importlib; see the module's documentation for alternative uses
+App 1783664 output:   import sys, os, io, re, imp, threading, signal, traceback, socket, select, struct, logging, errno
+App 1783664 output: Traceback (most recent call last):
+App 1783664 output:   File "/opt/passenger-5.3.7-9.el7.cloudlinux/src/helper-scripts/wsgi-loader.py", line 369, in <module>
+App 1783664 output:     app_module = load_app()
+App 1783664 output: 
+App 1783664 output:   File "/opt/passenger-5.3.7-9.el7.cloudlinux/src/helper-scripts/wsgi-loader.py", line 76, in load_app
+App 1783664 output:     return imp.load_source('passenger_wsgi', startup_file)
+App 1783664 output: 
+App 1783664 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib64/python3.7/imp.py", line 171, in load_source
+App 1783664 output:     module = _load(spec)
+App 1783664 output: 
+App 1783664 output:   File "<frozen importlib._bootstrap>", line 696, in _load
+App 1783664 output:   File "<frozen importlib._bootstrap>", line 677, in _load_unlocked
+App 1783664 output:   File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+App 1783664 output:   File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+App 1783664 output:   File "/home/alexua75/flask/restoran/passenger_wsgi.py", line 8, in <module>
+App 1783664 output:     wsgi = imp.load_source('wsgi', 'app.py')
+App 1783664 output: 
+App 1783664 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib64/python3.7/imp.py", line 171, in load_source
+App 1783664 output:     module = _load(spec)
+App 1783664 output: 
+App 1783664 output:   File "<frozen importlib._bootstrap>", line 696, in _load
+App 1783664 output:   File "<frozen importlib._bootstrap>", line 677, in _load_unlocked
+App 1783664 output:   File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+App 1783664 output:   File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+App 1783664 output:   File "app.py", line 1, in <module>
+App 1783664 output:     
+App 1783664 output: import restoran
+App 1783664 output:   File "/home/alexua75/flask/restoran/restoran/__init__.py", line 15, in <module>
+App 1783664 output:     db.create_all()
+App 1783664 output: 
+App 1783664 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/flask_sqlalchemy/__init__.py", line 1039, in create_all
+App 1783664 output:     
+App 1783664 output: self._execute_for_all_tables(app, bind, 'create_all')
+App 1783664 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/flask_sqlalchemy/__init__.py", line 1016, in _execute_for_all_tables
+App 1783664 output:     app = self.get_app(app)
+App 1783664 output: 
+App 1783664 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/flask_sqlalchemy/__init__.py", line 988, in get_app
+App 1783664 output:     
+App 1783664 output: 'No application found. Either work inside a view function or push'
+App 1783664 output: RuntimeError
+App 1783664 output: : No application found. Either work inside a view function or push an application context. See http://flask-sqlalchemy.pocoo.org/contexts/.
+App 1783951 output: /opt/passenger-5.3.7-9.el7.cloudlinux/src/helper-scripts/wsgi-loader.py:26: DeprecationWarning: the imp module is deprecated in favour of importlib; see the module's documentation for alternative uses
+App 1783951 output:   import sys, os, io, re, imp, threading, signal, traceback, socket, select, struct, logging, errno
+App 1783951 output: Traceback (most recent call last):
+App 1783951 output:   File "/opt/passenger-5.3.7-9.el7.cloudlinux/src/helper-scripts/wsgi-loader.py", line 369, in <module>
+App 1783951 output:     
+App 1783951 output: app_module = load_app()
+App 1783951 output:   File "/opt/passenger-5.3.7-9.el7.cloudlinux/src/helper-scripts/wsgi-loader.py", line 76, in load_app
+App 1783951 output:     return imp.load_source('passenger_wsgi', startup_file)
+App 1783951 output: 
+App 1783951 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib64/python3.7/imp.py", line 171, in load_source
+App 1783951 output:     module = _load(spec)
+App 1783951 output: 
+App 1783951 output:   File "<frozen importlib._bootstrap>", line 696, in _load
+App 1783951 output:   File "<frozen importlib._bootstrap>", line 677, in _load_unlocked
+App 1783951 output:   File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+App 1783951 output:   File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+App 1783951 output:   File "/home/alexua75/flask/restoran/passenger_wsgi.py", line 8, in <module>
+App 1783951 output:     wsgi = imp.load_source('wsgi', 'app.py')
+App 1783951 output: 
+App 1783951 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib64/python3.7/imp.py", line 171, in load_source
+App 1783951 output:     
+App 1783951 output: module = _load(spec)
+App 1783951 output:   File "<frozen importlib._bootstrap>", line 696, in _load
+App 1783951 output:   File "<frozen importlib._bootstrap>", line 677, in _load_unlocked
+App 1783951 output:   File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+App 1783951 output:   File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+App 1783951 output:   File "app.py", line 1, in <module>
+App 1783951 output:     
+App 1783951 output: import restoran
+App 1783951 output:   File "/home/alexua75/flask/restoran/restoran/__init__.py", line 15, in <module>
+App 1783951 output:     db.create_all()
+App 1783951 output: 
+App 1783951 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/flask_sqlalchemy/__init__.py", line 1039, in create_all
+App 1783951 output:     
+App 1783951 output: self._execute_for_all_tables(app, bind, 'create_all')
+App 1783951 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/flask_sqlalchemy/__init__.py", line 1016, in _execute_for_all_tables
+App 1783951 output:     app = self.get_app(app)
+App 1783951 output: 
+App 1783951 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib/python3.7/site-packages/flask_sqlalchemy/__init__.py", line 988, in get_app
+App 1783951 output:     
+App 1783951 output: 'No application found. Either work inside a view function or push'
+App 1783951 output: RuntimeError
+App 1783951 output: : No application found. Either work inside a view function or push an application context. See http://flask-sqlalchemy.pocoo.org/contexts/.
+App 1785475 output: /opt/passenger-5.3.7-9.el7.cloudlinux/src/helper-scripts/wsgi-loader.py:26: DeprecationWarning: the imp module is deprecated in favour of importlib; see the module's documentation for alternative uses
+App 1785475 output:   import sys, os, io, re, imp, threading, signal, traceback, socket, select, struct, logging, errno
+App 1785475 output: Traceback (most recent call last):
+App 1785475 output:   File "/opt/passenger-5.3.7-9.el7.cloudlinux/src/helper-scripts/wsgi-loader.py", line 369, in <module>
+App 1785475 output:     app_module = load_app()
+App 1785475 output: 
+App 1785475 output:   File "/opt/passenger-5.3.7-9.el7.cloudlinux/src/helper-scripts/wsgi-loader.py", line 76, in load_app
+App 1785475 output:     return imp.load_source('passenger_wsgi', startup_file)
+App 1785475 output: 
+App 1785475 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib64/python3.7/imp.py", line 171, in load_source
+App 1785475 output:     
+App 1785475 output: module = _load(spec)
+App 1785475 output:   File "<frozen importlib._bootstrap>", line 696, in _load
+App 1785475 output:   File "<frozen importlib._bootstrap>", line 677, in _load_unlocked
+App 1785475 output:   File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+App 1785475 output:   File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+App 1785475 output:   File "/home/alexua75/flask/restoran/passenger_wsgi.py", line 9, in <module>
+App 1785475 output:     application = wsgi.app
+App 1785475 output: 
+App 1785475 output: AttributeError: 
+App 1785475 output: module 'wsgi' has no attribute 'app'
+App 1786827 output: /opt/passenger-5.3.7-9.el7.cloudlinux/src/helper-scripts/wsgi-loader.py:26: DeprecationWarning: the imp module is deprecated in favour of importlib; see the module's documentation for alternative uses
+App 1786827 output:   import sys, os, io, re, imp, threading, signal, traceback, socket, select, struct, logging, errno
+App 1786827 output: Traceback (most recent call last):
+App 1786827 output:   File "/opt/passenger-5.3.7-9.el7.cloudlinux/src/helper-scripts/wsgi-loader.py", line 369, in <module>
+App 1786827 output:     
+App 1786827 output: app_module = load_app()
+App 1786827 output:   File "/opt/passenger-5.3.7-9.el7.cloudlinux/src/helper-scripts/wsgi-loader.py", line 76, in load_app
+App 1786827 output:     return imp.load_source('passenger_wsgi', startup_file)
+App 1786827 output: 
+App 1786827 output:   File "/home/alexua75/virtualenv/flask/restoran/3.7/lib64/python3.7/imp.py", line 171, in load_source
+App 1786827 output:     
+App 1786827 output: module = _load(spec)
+App 1786827 output:   File "<frozen importlib._bootstrap>", line 696, in _load
+App 1786827 output:   File "<frozen importlib._bootstrap>", line 677, in _load_unlocked
+App 1786827 output:   File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+App 1786827 output:   File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+App 1786827 output:   File "/home/alexua75/flask/restoran/passenger_wsgi.py", line 9, in <module>
+App 1786827 output:     application = wsgi.app
+App 1786827 output: 
+App 1786827 output: AttributeError: module 'wsgi' has no attribute 'app'
